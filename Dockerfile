@@ -1,13 +1,13 @@
 # Copyright 2019, Development Gateway, see COPYING
 FROM alpine:3.9
 
-RUN apk add --no-cache opensmtpd
+RUN apk add --no-cache opensmtpd tini
 
 COPY entrypoint.sh /
 RUN mkdir -m 0711 /var/spool/smtpd
 
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["opensmtpd"]
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["/entrypoint.sh"]
 
 VOLUME /var/spool/smtpd
 

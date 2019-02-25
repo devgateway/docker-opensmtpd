@@ -1,4 +1,5 @@
 #!/bin/sh -e
+# Copyright 2019, Development Gateway, see COPYING
 : ${OPENSMTPD_LISTEN_ON:=0.0.0.0;::}
 : ${OPENSMTPD_RULES:=accept from source <private> for any relay}
 if [ "$1" = "opensmtpd" ]; then

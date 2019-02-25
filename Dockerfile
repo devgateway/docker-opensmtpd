@@ -5,6 +5,7 @@ RUN apk add --no-cache opensmtpd tini
 
 COPY entrypoint.sh /
 RUN mkdir -m 0711 /var/spool/smtpd
+COPY smtpd.conf /etc/smtpd/
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/entrypoint.sh"]
